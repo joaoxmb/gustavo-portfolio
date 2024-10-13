@@ -49,10 +49,14 @@ const ImageTools = Extension.create({
   },
 
   onCreate() {
-    this.editor.schema = new Schema({
-      nodes: updateImageNode(this.editor.schema.spec.nodes, this.options),
-      marks: this.editor.schema.spec.marks,
-    });
+    try {
+      this.editor.schema = new Schema({
+        nodes: updateImageNode(this.editor.schema.spec.nodes, this.options),
+        marks: this.editor.schema.spec.marks,
+      });
+    } catch(err) {
+      console.error(err);
+    }
   },
 
   addProseMirrorPlugins() {
