@@ -1,4 +1,4 @@
-import TiptapEditor from "@/tiptap/components/tiptap-editor";
+import TiptapEditor from "@/components/tiptap-editor";
 
 const EditorPage = () => {
   return (

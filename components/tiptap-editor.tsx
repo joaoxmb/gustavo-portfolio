@@ -9,12 +9,16 @@ const TiptapEditor = () => {
     extensions: [
       StarterKit
     ],
-    content: "teste"
+    content: "teste",
+    immediatelyRender: false
   })
 
   return (
     <>
-      <EditorContent editor={editor} />
+      <EditorContent 
+        className="prose lg:prose-xl md:prose-base sm:prose-sm"
+        editor={editor} 
+      />
     </>
   )
 }
