@@ -12,6 +12,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
+    "@tiptap/extension-image": "^2.8.0",
     "@tiptap/pm": "^2.8.0",
     "@tiptap/react": "^2.8.0",
     "@tiptap/starter-kit": "^2.8.0",
@@ -23,14 +24,17 @@
     "next": "latest",
     "next-themes": "^0.3.0",
     "prettier": "^3.3.3",
+    "prosemirror-image-plugin": "^2.10.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "20.10.6",
     "@types/react": "18.2.46",
     "@types/react-dom": "18.2.18",
+    "@types/uuid": "^10.0.0",
     "postcss": "8.4.33",
     "tailwind-merge": "^2.5.2",
     "tailwindcss": "3.4.1",
