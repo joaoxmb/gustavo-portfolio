@@ -1,8 +1,8 @@
-"use server";
+"use client";
 import Image from "next/image";
-import ytdl from "@distube/ytdl-core";
-import { parseContent, Post } from "@/utils/supabase/post";
 import Link from "next/link";
+
+import { parseContent, Post } from "@/utils/supabase/post";
 import { JSONContent } from "@tiptap/react";
 import Video from "../ui/video";
 
@@ -55,7 +55,9 @@ const calcLayout = (content?: JSONContent[]) => {
         if (index == 0) return array;
 
         const random = Math.max(
-          Math.round(randomGenerator(equalParts) / randomAmountRemaining * 1.5),
+          Math.round(
+            (randomGenerator(equalParts) / randomAmountRemaining) * 1.5
+          ),
           0
         );
 
@@ -83,9 +85,7 @@ interface PostReducedProps {
   post: Post;
 }
 
-const PostReduced = async ({
-  post: { content, title, id },
-}: PostReducedProps) => {
+const PostReduced = ({ post: { content, title, id } }: PostReducedProps) => {
   const { content: body } = parseContent(content);
   const filtredMidia = filterMidia(body);
   const midiaWithLayout = calcLayout(filtredMidia);
@@ -109,26 +109,11 @@ const PostReduced = async ({
                     alt=""
                     width={1024}
                     height={1024}
-                    className="w-full h-full aspect-video object-cover object-center"
+                    className="w-full h-full object-cover object-center"
                   />
                 );
-              // case "youtube":
-              //   const { formats } = await ytdl.getInfo(attrs?.src);
-              //   const filterFormat = formats.filter(
-              //     ({ mimeType, url, quality }) =>
-              //       mimeType?.includes("video/mp4") &&
-              //       url.includes("https://rr")
-              //   );
-
-              //   return (
-              //     <Video 
-              //       src={filterFormat[0].url} 
-              //       autoPlay={true}
-              //       controls={false}
-              //       muted={true}
-              //       className="w-full h-full aspect-video object-cover"
-              //     />
-              //   );
+              case "youtube":
+                return <Video src={attrs?.src} className="w-full h-full" />;
             }
           };
 
