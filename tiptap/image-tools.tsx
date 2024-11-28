@@ -8,11 +8,11 @@ import {
 } from "prosemirror-image-plugin";
 
 import "prosemirror-image-plugin/dist/styles/common.css";
-import "prosemirror-image-plugin/dist/styles/withResize.css";
-import "prosemirror-image-plugin/dist/styles/sideResize.css";
-import "prosemirror-image-plugin/dist/styles/withoutResize.css";
+// import "prosemirror-image-plugin/dist/styles/withResize.css";
+// import "prosemirror-image-plugin/dist/styles/sideResize.css";
+// import "prosemirror-image-plugin/dist/styles/withoutResize.css";
 
-import { deleteImage, uploadImage } from "./actions";
+import { deleteImage, uploadImage } from "./utils";
 import { createRoot } from "react-dom/client";
 import { Button } from "@/components/ui/button";
 
@@ -24,21 +24,20 @@ const settings: ImagePluginSettings = {
   deleteSrc(src) {
     return deleteImage(src);
   },
-  hasTitle: false,
-  imageMargin: 0,
+  createOverlay(node, getPos, view) {
+    const container = document.createElement("div");
+    const root = createRoot(container);
+
+    root.render(
+      <>
+        <Button onClick={() => console.log("deu certoo")}>teste</Button>
+      </>
+    );
+
+    return container;
+  },
   enableResize: false,
-  // createOverlay(node, getPos, view) {
-  //   const container = document.createElement("div");
-  //   const root = createRoot(container);
-
-  //   root.render(
-  //     <>
-  //       <Button onClick={() => console.log("deu certoo")}>teste</Button>
-  //     </>
-  //   );
-
-  //   return container;
-  // },
+  hasTitle: false
 };
 
 const ImageTools = Extension.create({

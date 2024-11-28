@@ -1,9 +1,15 @@
-import TiptapEditor from "@/components/tiptap-editor";
+"use server";
 
-const EditorPage = () => {
-  return (
-    <TiptapEditor />
-  )
+import Editor from "@/components/editor";
+
+interface EditorPageProps {
+  params: Promise<{ id: string }>;
 }
+
+const EditorPage = async ({ params }: EditorPageProps) => {
+  const { id } = await params;
+
+  return <Editor id={id} />;
+};
 
 export default EditorPage;
