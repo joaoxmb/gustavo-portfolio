@@ -67,3 +67,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .tiptap-youtube-ex [data-youtube-video] {
+    @apply relative py-4 cursor-grab;
+  }
+  .tiptap-youtube-ex [data-youtube-video] iframe {
+    aspect-ratio: 16/9;
+    @apply w-full h-full;
+  }
+}
