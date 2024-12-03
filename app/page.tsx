@@ -20,7 +20,7 @@ export default async function Index() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main className="container">
         {data.map((post) => {
           return <PostReduced post={post} />;
